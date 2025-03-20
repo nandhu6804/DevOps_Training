@@ -5,6 +5,10 @@ INSTALL
 *Jenkins
 *Virtual machine -> Ubuntu
 
+DOCKER
+Docker is a platform that provides virtual containers on which an application can be deployed independent of the underlying OS of the server. Further the container can be created from a replica called docker image which contains all the dependencies and can run on any OS that has docker engine, with similar results.
+
+
 DOCKER COMMANDS
 >>docker images 
 >>docker run -itd -P <Image id>
@@ -17,9 +21,6 @@ DOCKER COMMANDS
 >>docker rmi <image_id> (to remove images)
 
 ----------x----------x----------x----------x----------x----------
-
-Docker is a platform that provides virtual containers on which an application can be deployed independent of the underlying OS of the server. Further the container can be created from a replica called docker image which contains all the dependencies and can run on any OS that has docker engine, with similar results.
-
 VIRTUALIZATION:
 Virtualization is the process of sharing hardware resources across several virtually isolated and mutually independent systems. It is achieved by using a hypervisor which acts as a bridge between the Operating System of each of the virtual machines and the underlying hardware.
 Applications in virtual environments run on a host operating system on top of the hypervisor.
