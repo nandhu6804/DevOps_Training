@@ -200,3 +200,129 @@ git commit
 git push
 (password -> git token)
 sudo chmod 666 /var/run/docker.sock
+
+-----------------------------------------------
+MINIKUBE COMMANDS:
+minikube start
+minikube status
+kubectl get pod
+kubectl run my_pod --image=nginx --port=80
+kubectl get node
+kubectl get pod
+kubectl get node -o wide
+kubectl get pod -o wide
+kubectl logs my-pod
+kubectl describe pod my-pod
+kubectl exec -it my-pod -- /bin/bash
+/usr/local/tomcat#ls
+cd webapps
+ls
+exit
+sudo nano pod.yml
+then paste the command in grp
+kubectl apply -f  pod.yml
+kubectl get pod
+kubectl delete pod my-pod
+
+minikube ssh
+docker ps
+minikube ip
+kubectl get rs
+kubectl get pod
+kubectl create deployment web-nginx --image=nginx --replicas=1
+kubectl get deploy
+kubectl get pod
+kubectl delete deployment web-nginx
+kubectl get pod
+kubectl delete pod my-app
+kubectl get pod
+
+Replica Set:
+sudo nano rs-test.yml
+past from grp
+kubectl apply -f  rs-test.yml
+kubectl get rs
+kubectl get pod
+kubectl delete pod my-rs-jclds // even if one pod is deleted other pod is automatically created
+kubectl get pod
+
+-------------------------------------------
+
+2. Create Deployment by executing above YAML file
+$ kubectl create -f web-deploy.yml
+# Do necessary modifications if exist, else create new
+$ kubectl create -f web-deploy.yml
+# Completely Modify Pod Template
+$ kubectl replace –f web-deploy.yml
+
+3. View Deployments
+$ kubectl get deployments
+$ kubectl get deploy
+$ kubectl get deploy -o wide
+$ kubectl get deploy <deployment-name> -o json
+$ kubectl get deploy <deployment-name> -o yaml
+4. View Deployment Description 
+$ kubectl describe deploy <deployment-name>
+5. We can modify generated/updated YAML file
+$ kubectl edit deploy <deployment-name>
+## change replicas: count to any other value then (ESC):wq
+
+# We can modify our YAML file and then execute apply command
+$ kubectl apply -f web-deploy.yml
+
+## We can Even scale using command also
+$ kubectl  scale  deploy  <deployment-name>   --replicas=<desired-replica-count>
+
+6. Delete Deployment
+$ kubectl delete deploy <deployment-name>
+$ kubectl delete -f web-deploy.yml
+
+2. Create ReplicaSet by executing above YAML file
+$ kubectl create -f rs-test.yml
+# Do necessary modifications if exist, else create new
+$ kubectl apply -f rs-test.yml
+# Completely Modify Pod Template
+$ kubectl replace –f rs-test.yml
+
+3. View ReplicaSets 
+$ kubectl get replicasets
+$ kubectl get rs
+$ kubectl get rs –o wide
+$ kubectl get rs <replica-set-name> –o json
+$ kubectl get rs <replica-set-name> –o yaml
+
+4. View ReplicaSet Description 
+$ kubectl describe rs <replica-set-name>
+5. We can modify generated/updated YAML file
+$ kubectl edit rs <replica-set-name>
+## change replicas: count to any other value then (ESC):wq
+
+# We can modify our YAML file and then execute apply command
+$ kubectl apply -f rs-test.yml
+
+## We can Even scale using command also
+$ kubectl scale replicaset <replicaset-name> --replicas=<desired-replica-count>
+
+6. Delete ReplicaSet
+$ kubectl delete rs <replica-set-name>
+$ kubectl delete -f rs-test.yml
+
+Namespace (short name = ns):
+namespace is a virtual cluster or logical partition within a cluster that provides a way to organize and isolate resources. 
+It allows multiple teams or projects to share the same physical cluster while maintaining resource separation and access control.
+
+# To create a namespace:
+$ kubectl create namespace <namespace-name>
+$ kubectl create ns my-bank
+# To switch to a specific namespace: (make this as default type)
+$ kubectl config set-context --current --namespace=<namespace-name>
+# To list all namespaces:
+$ kubectl get namespaces
+# To get resources within a specific namespace:
+$ kubectl get <resource-type> -n <namespace-name>
+$ kubectl get deploy -n my-bank
+$ kubectl get deploy --namespace my-bank
+$ kubectl get all --namespace my-bank
+# To delete a namespace and all associated resources:
+$ kubectl delete namespace <namespace-name>
+$ kubectl delete ns my-bank
