@@ -1,0 +1,43 @@
+MINIKUBE COMMANDS:
+minikube start
+minikube status
+kubectl get pod
+kubectl run my_pod --image=nginx --port=80
+kubectl get node
+kubectl get pod
+kubectl get node -o wide
+kubectl get pod -o wide
+kubectl logs my-pod
+kubectl describe pod my-pod
+kubectl exec -it my-pod -- /bin/bash
+/usr/local/tomcat#ls
+cd webapps
+ls
+exit
+sudo nano pod.yml
+then paste the command in grp
+kubectl apply -f  pod.yml
+kubectl get pod
+kubectl delete pod my-pod
+
+minikube ssh
+docker ps
+minikube ip
+kubectl get rs
+kubectl get pod
+kubectl create deployment web-nginx --image=nginx --replicas=1
+kubectl get deploy
+kubectl get pod
+kubectl delete deployment web-nginx
+kubectl get pod
+kubectl delete pod my-app
+kubectl get pod
+
+Replica Set:
+sudo nano rs-test.yml
+past from grp
+kubectl apply -f  rs-test.yml
+kubectl get rs
+kubectl get pod
+kubectl delete pod my-rs-jclds // even if one pod is deleted other pod is automatically created
+kubectl get pod
