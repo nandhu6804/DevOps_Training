@@ -6,7 +6,8 @@ INSTALL
 *Virtual machine -> Ubuntu
 
 DOCKER
-Docker is a platform that provides virtual containers on which an application can be deployed independent of the underlying OS of the server. Further the container can be created from a replica called docker image which contains all the dependencies and can run on any OS that has docker engine, with similar results.
+Docker is a platform that provides virtual containers on which an application can be deployed independent of the underlying OS of the server. 
+Further the container can be created from a replica called docker image which contains all the dependencies and can run on any OS that has docker engine, with similar results.
 
 
 DOCKER COMMANDS
