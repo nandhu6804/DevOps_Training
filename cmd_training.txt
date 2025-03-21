@@ -309,6 +309,60 @@ $ kubectl scale replicaset <replicaset-name> --replicas=<desired-replica-count>
 $ kubectl delete rs <replica-set-name>
 $ kubectl delete -f rs-test.yml
 
+Services (short name = svc):
+Service is an abstraction that defines a logical set of pods and a policy to access them. Services enable network connectivity and load balancing to the pods that are part of the service, allowing other components within or outside the cluster to interact with the application.
+Service Types: Kubernetes supports different types of services:
+1.	NodePort: Exposes the service on a static port on each selected node's IP. This type makes the service accessible from outside the cluster by the <NodeIP>:<NodePort> combination.
+
+2.	ClusterIP: Exposes the service on a cluster-internal IP. This type makes the service only reachable within the cluster.
+
+3.	LoadBalancer: Creates an external load balancer in cloud environments, which routes traffic to the service.
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deploy
+  labels:
+    name: my-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      apptype: web-backend
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        apptype: web-backend
+    spec:
+      containers:
+      - name: my-app
+        image: 
+        ports:
+        - containerPort: 9000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  labels:
+    app: my-service
+spec:
+  type: NodePort
+  ports:
+    - port: 9000
+      targetPort: 8080
+      nodePort: 30002
+  selector:
+    apptype: web-backend
+
+minikube service my-service 
+kubectl apply -f my-service
+
 Namespace (short name = ns):
 namespace is a virtual cluster or logical partition within a cluster that provides a way to organize and isolate resources. 
 It allows multiple teams or projects to share the same physical cluster while maintaining resource separation and access control.
