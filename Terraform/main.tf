@@ -165,6 +165,7 @@ resource "aws_instance" "pri_ins" {
   key_name                     = "David"
 }
 
+
 #terraform init
 #terraform validate
 #terraform plan
